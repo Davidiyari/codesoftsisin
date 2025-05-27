@@ -1,0 +1,20 @@
+from moviepy.editor import VideoFileClip
+class MovieManager:
+    
+    def get_audio(self,mp4_file,mp3_file):
+      vc = VideoFileClip(mp4_file)
+      ac = vc.audio
+      ac.write_audiofile(mp3_file)
+     
+      ac.close()
+      vc.close()
+     
+    def remove_audio(self,mp4_file,output_mp4):
+        video = VideoFileClip(mp4_file)
+        video_wa = video.without_audio()
+        video_wa.write_videofile(output_mp4)
+        video_wa.close()
+        video.close()
+
+mm=MovieManager()
+mm.remove_audio('2 Minute Timer ANTS vs WATERMELON - YouTube.mp4','audio.mp4')
